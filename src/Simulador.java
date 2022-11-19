@@ -60,6 +60,7 @@ public class Simulador extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         JTree01 = new javax.swing.JTree();
+        jLabel17 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -152,6 +153,8 @@ public class Simulador extends javax.swing.JFrame {
         }
         jScrollPane4.setViewportView(JTree01);
 
+        jLabel17.setText("0");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -177,11 +180,17 @@ public class Simulador extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(156, 156, 156)
+                .addComponent(jLabel17)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(9, 9, 9)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -608,13 +617,36 @@ public class Simulador extends javax.swing.JFrame {
         if (this.jProgressBar1.getValue() == 100) {
             this.jProgressBar1.setValue(0);
             this.valorBarra = 0;
+            this.jugadores.get(0).aumentarConsumo(true);
+            initTabla();
         }else{
             this.valorBarra += 7;
             this.jProgressBar1.setValue(this.valorBarra);
-            this.jugadores.get(0).aumentarConsumo();
+            this.jugadores.get(0).aumentarConsumo(false);
+            initTabla();
         }
     }//GEN-LAST:event_BotonAlimentarMouseClicked
 
+    public void initTabla(){
+        tablaJuego.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {j1.getNombre(), j1.getNivelGordura(), j1.getPuntosConsumo(), j1.getAlimento()},
+                {j2.getNombre(), j2.getNivelGordura(), j2.getPuntosConsumo(), j2.getAlimento()},
+                {j3.getNombre(), j3.getNivelGordura(), j3.getPuntosConsumo(), j3.getAlimento()},
+                {j4.getNombre(), j4.getNivelGordura(), j4.getPuntosConsumo(), j4.getAlimento()},
+                {j5.getNombre(), j5.getNivelGordura(), j5.getPuntosConsumo(), j5.getAlimento()},
+                {j6.getNombre(), j6.getNivelGordura(), j6.getPuntosConsumo(), j6.getAlimento()},
+                {j7.getNombre(), j7.getNivelGordura(), j7.getPuntosConsumo(), j7.getAlimento()},
+                {j8.getNombre(), j8.getNivelGordura(), j8.getPuntosConsumo(), j8.getAlimento()},
+                {j9.getNombre(), j9.getNivelGordura(), j9.getPuntosConsumo(), j9.getAlimento()},
+                {j10.getNombre(), j10.getNivelGordura(), j10.getPuntosConsumo(), j10.getAlimento()}
+            },
+            new String [] {
+                "Usuario", "Nivel", "Consumo", "Alimento"
+            }
+        ));
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -686,6 +718,7 @@ public class Simulador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

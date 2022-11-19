@@ -86,9 +86,11 @@ public class Jugador {
         this.billetera = billetera;
     }
 
-    public void aumentarConsumo(){
+    public void aumentarConsumo(boolean subir){
         this.puntosConsumo += 100;
+        if(subir){
+            this.nivelGordura++;
+        }
     }
-    
     
 }
